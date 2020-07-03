@@ -1,0 +1,32 @@
+on:
+  push:
+
+env:
+  IEX_API_KEY: ${{ secrets.IEX_API_KEY }}
+  GH_PAGES_BRANCH: gh-pages
+
+jobs:
+  make_report:
+    name: Generate Report
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v1
+        with:
+          python-version: '3.7' # Semantic version range syntax or exact version of a Python version
+          architecture: 'x64' # Optional - x64 or x86, defaults to x64
+      - name: installation of dependencies
+        run: |
+          pip install -r requirements.txt
+          sudo wget https://github.com/plotly/orca/releases/download/v1.2.1/orca-1.2.1-x86_64.AppImage -O /usr/local/bin/orca
+          sudo chmod +x /usr/local/bin/orca
+          sudo apt-get install xvfb libgtk2.0-0 libgconf-2-4 tree -y
+      - name: Generate Report Test
+        run:  |
+          cd lib
+          python yt_nlp.py
+      - name: Pull Youtube Channels
+        run: |
+          cd lib
+          
