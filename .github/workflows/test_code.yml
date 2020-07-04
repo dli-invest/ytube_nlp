@@ -1,4 +1,7 @@
-on: push
+on:
+  push:
+    paths:
+      - '!data/**'
 
 env:
   IEX_API_KEY: ${{ secrets.IEX_API_KEY }}
@@ -23,9 +26,8 @@ jobs:
           sudo apt-get install xvfb libgtk2.0-0 libgconf-2-4 tree -y
       - name: Generate Report Test
         run:  |
-          cd lib
-          python yt_nlp.py
+          python -m lib.yt_nlp
       - name: Pull Youtube Channels
         run: |
-          cd lib
+          python -m lib.get_videos
           

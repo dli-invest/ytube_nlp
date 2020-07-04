@@ -7,12 +7,13 @@ import glob
 import shutil
 from jinja2 import Template
 from datetime import date, datetime
-
+from lib.util import get_config
 def main(args):
     end_date = str(date.today())
     gh_pages_name = 'gh-pages'
     for report_cfg_file in glob.glob("lib/cfg/*.yml"):
         # report_name = report_cfg["name"]
+        report_cfg = get_config(report_cfg_file)
         pass 
         options = dict(Version="1.0.0")
         report_name = 'test'

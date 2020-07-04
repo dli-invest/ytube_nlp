@@ -4,8 +4,10 @@ from spacy.lang.en import English
 import json
 from jinja2 import Template
 from youtube_transcript_api import YouTubeTranscriptApi
+
+from lib.custom_nlp.text_processing import NLPLogic
 # Youtube Natural Language Processing
-class YTNLP:
+class YTNLP(NLPLogic):
     # Initializer / Instance Attributes
     def __init__(self, video_id, html_template='ytube.jinja2'):
         self.html_template = html_template
@@ -15,7 +17,7 @@ class YTNLP:
         # Dict line object for the transcript object returned 
         # from youtube with extra data from nlp
         self.lines = []
-        self.nlp = spacy.load("en_core_web_sm")
+        NLPLogic.__init__(self)
 
     def fetch_transcript(self, languages=['en-US', 'en']):
         transcript_list = YouTubeTranscriptApi.list_transcripts(self.video_id)
@@ -81,8 +83,7 @@ class YTNLP:
 
 
 def main(args):
-
-    video_id = args.video_id
+    video_id = args.video
     html_template = args.template
     youtube_nlp = YTNLP(video_id, html_template=html_template)
     youtube_nlp.fetch_transcript()
@@ -101,6 +102,6 @@ if __name__ == '__main__':
     parser.add_argument("-t", 
                         "--template", 
                         help="Template file", 
-                        default="ytube.jinja2") 
+                        default="lib/ytube.jinja2") 
     args = parser.parse_args()
     main(args)
