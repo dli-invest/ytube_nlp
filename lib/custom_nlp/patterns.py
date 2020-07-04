@@ -4,6 +4,7 @@ cse_pattern = [
   {"IS_PUNCT": True, 'OP': '?'},
   {'ENT_TYPE': 'ORG'}
 ]
+
 tsx_pattern = [
   {'TEXT': 'TSX'},
   {"TEXT": "-",'OP': '?'},
