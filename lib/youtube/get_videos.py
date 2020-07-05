@@ -15,6 +15,8 @@ def extract_key_video_data(video_data):
     # Takes video search response and extracts the data of interest
     # videoId, title, description, channelId, publishedAt
     key_video_data = []
+    if video_data is None:
+        return
     for video in video_data.get("items"):
         snippet = video.get('snippet')
         vid_id = video.get('id')
