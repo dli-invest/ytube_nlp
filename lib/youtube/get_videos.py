@@ -54,7 +54,7 @@ def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     # Check if an error object is present
     if r.get('error') is not None:
         print(r)
-        print('Error is reached')
+        print('Add Authentication Key')
     # NLP for CSE and CVE
     return r
 
