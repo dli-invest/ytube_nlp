@@ -1,5 +1,6 @@
 import requests 
 import os
+import sys
 from datetime import datetime, timezone, timedelta
 
 def main(args):
@@ -39,6 +40,8 @@ def extract_key_video_data(video_data):
 def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     youtube_api = 'https://www.googleapis.com/youtube/v3/search'
     youtube_api_key = os.getenv("YOUTUBE_API_KEY")
+    if youtube_api_key is None:
+        raise SystemExit('Need Youtube API KEY')
     params['channelId'] = channel_id
     params['order'] = 'date'
     current_date = datetime.now(timezone.utc)
