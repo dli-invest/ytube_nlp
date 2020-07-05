@@ -6,11 +6,9 @@ def main(args):
     channel_id = args.channel
     video_data = get_video_data_for_channel(channel_id)
 
-
 def get_video_data_for_channel(channel_id):
     raw_video_data = search_videos_for_channel(channel_id)
     video_data = extract_key_video_data(raw_video_data)
-    print(video_data)
     return video_data
 
 def extract_key_video_data(video_data):
@@ -41,7 +39,7 @@ def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     params['order'] = 'date'
     current_date = datetime.now(timezone.utc)
     publishedBefore = (current_date - timedelta(hours=12)).isoformat()
-    publishedAfter = (current_date - timedelta(hours=36)).isoformat()
+    publishedAfter = (current_date - timedelta(hours=48)).isoformat()
     params['publishedBefore'] = publishedBefore
     params['publishedAfter'] = publishedAfter
     params['maxResults'] = 100

@@ -8,24 +8,17 @@ import shutil
 from jinja2 import Template
 from datetime import date, datetime
 from lib.util import get_config
+from lib.youtube.get_videos import get_video_data_for_channel
+from lib.youtube.yt_nlp import YTNLP
+
 def main(args):
     end_date = str(date.today())
     gh_pages_name = 'gh-pages'
     for report_cfg_file in glob.glob("lib/cfg/*.yml"):
-        # report_name = report_cfg["name"]
         report_cfg = get_config(report_cfg_file)
-        pass 
-        options = dict(Version="1.0.0")
-        report_name = 'test'
+        report_name = report_cfg["name"]
         output_folder = f"{args.output}/{report_name}"
         pathlib.Path(output_folder).mkdir(parents=True, exist_ok=True)
-
-        
-        with open(args.template) as file_:
-            template = Template(file_.read())
-        renderer_template = template.render(**options)
-        with open(f"{output_folder}/index.html", "w", errors='ignore') as f:
-            f.write(renderer_template)
 
         # Attempt to move the folder
         # Make in gh pages folder even if exists
@@ -33,9 +26,29 @@ def main(args):
         pathlib.Path(gh_report_folder).mkdir(parents=True, exist_ok=True)
         # Any files in the output folder, if I need nested files in folders
         # use something else
+
+        # Make channel videos
+        for channel in report_cfg["channels"]:
+            channel_id = channel.get('id')
+            if channel_id is not None:
+                video_data = get_video_data_for_channel(channel_id)
+                for video_info in video_data:
+                    video_id = video_info.get('videoID')
+                    with YTNLP(video_id=video_id, html_template='lib/ytube.jinja2') as yt_nlp:
+                        file_path = f"{output_folder}/{video_id}.html"
+                        success_attempt = yt_nlp.gen_report_for_id(video_id, report_path=file_path, video_data=video_data)
+                        print(success_attempt)
+                print(video_data)
+                # If no_transcript is retrieved
+                # analyze the video_data only 
+                # else 
+                # grab automate transcript from youtube
+            else:
+                print('Channel not found for')
+                print(channel)
         for report_file in glob.glob(f"{output_folder}/*"):
             try:
-                # Move css files
+                # Move report files
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
                 print(e)

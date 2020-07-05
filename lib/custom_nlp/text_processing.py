@@ -63,5 +63,8 @@ class NLPLogic:
       matched_strings.append(span.text)
     return matched_strings, matches
 
+  def __exit__(self, exc_type, exc_value, traceback):
+    self.nlp = None
+
 if __name__ == '__main__':
   nlpLogic = NLPLogic()
