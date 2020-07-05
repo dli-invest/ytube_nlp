@@ -50,6 +50,11 @@ def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     params['key'] = youtube_api_key
 
     r = requests.get(youtube_api, params=params).json()
+
+    # Check if an error object is present
+    if r.get('error') is not None:
+        print(r)
+        print('Error is reached')
     # NLP for CSE and CVE
     return r
 
