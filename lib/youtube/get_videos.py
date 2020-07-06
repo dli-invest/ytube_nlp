@@ -46,7 +46,7 @@ def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     params['order'] = 'date'
     current_date = datetime.now(timezone.utc)
     publishedBefore = (current_date - timedelta(hours=12)).isoformat()
-    publishedAfter = (current_date - timedelta(hours=48)).isoformat()
+    publishedAfter = (current_date - timedelta(hours=96)).isoformat()
     params['publishedBefore'] = publishedBefore
     params['publishedAfter'] = publishedAfter
     params['maxResults'] = 100

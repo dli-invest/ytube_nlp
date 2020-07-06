@@ -1,0 +1,1 @@
+from lib.email.send_mail import send_mailjet_email

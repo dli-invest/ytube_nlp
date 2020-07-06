@@ -19,6 +19,7 @@ class YTNLP(NLPLogic):
         """
         self.html_template = html_template
         self.video_id = video_id
+        self.transcript = None
         # Dict line object for the transcript object returned 
         # from youtube with extra data from nlp
         self.lines = []
@@ -32,6 +33,7 @@ class YTNLP(NLPLogic):
             transcript_list = YouTubeTranscriptApi.list_transcripts(self.video_id)
             transcript = transcript_list.find_transcript(languages)
             full_transcript = transcript.fetch()
+            self.transcript = full_transcript
             return full_transcript
         except TranscriptsDisabled as e:
             # add logger error here with video id and error type
