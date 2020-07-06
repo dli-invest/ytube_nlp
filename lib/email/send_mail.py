@@ -2,8 +2,8 @@ import os
 from mailjet_rest import Client
 
 def send_mailjet_email(cfg, html):
-  api_key = os.environ['MJ_APIKEY_PUBLIC']
-  api_secret = os.environ['MJ_APIKEY_PRIVATE']
+  api_key = os.getenv('MJ_APIKEY_PUBLIC')
+  api_secret = os.getenv('MJ_APIKEY_PRIVATE')
   mailjet = Client(auth=(api_key, api_secret), version='v3.1')
   data = {
     'Messages': [

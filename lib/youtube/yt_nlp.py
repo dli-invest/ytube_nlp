@@ -95,7 +95,6 @@ class YTNLP(NLPLogic):
             template = Template(file_.read())
 
         renderer_template = template.render(**options)
-        print(options, report_path)
         with open(report_path, "w", errors='ignore') as f:
             f.write(renderer_template)
 

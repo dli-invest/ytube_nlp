@@ -48,15 +48,15 @@ def main(args):
                         matches_per_vid = []
                         if title is not None:
                             temp_matches, _ = yt_nlp.stocks_of_interest(title)
-                            matches_per_vid = matches_per_vid + temp_matches
+                            matches_per_vid = [*matches_per_vid, *temp_matches]
                             temp_matches, _ = yt_nlp.stocks_from_exchange(title)
-                            matches_per_vid = matches_per_vid + temp_matches
+                            matches_per_vid = [*matches_per_vid, *temp_matches]
                         if description is not None:
                             temp_matches, _ = yt_nlp.stocks_of_interest(description)
-                            matches_per_vid = matches_per_vid + temp_matches
+                            matches_per_vid = [*matches_per_vid, *temp_matches]
                             temp_matches, _ = yt_nlp.stocks_from_exchange(description)
-                            matches_per_vid = matches_per_vid + temp_matches
-                        match_object = video_data
+                            matches_per_vid = [*matches_per_vid, *temp_matches]
+                        match_object = video_info
                         match_object['phrases'] = matches_per_vid
                         if is_generated is False:
                             # If no_transcript is retrieved
@@ -81,8 +81,8 @@ def main(args):
             send_mailjet_email(report_cfg, email_html)
             with open("report/investing/email.html", "w", errors='ignore') as f:
                 f.write(email_html)
-            pass
         except Exception as e:
+            print('FAILED TO MAKE TEMPLATE')
             print(e)
         for report_file in glob.glob(f"{output_folder}/*"):
             try:

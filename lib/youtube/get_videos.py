@@ -17,9 +17,7 @@ def extract_key_video_data(video_data):
     # videoId, title, description, channelId, publishedAt
     key_video_data = []
     if video_data is None or video_data is []:
-        print(video_data)
         return
-    print(video_data)
     for video in video_data.get("items"):
         snippet = video.get('snippet')
         vid_id = video.get('id')
