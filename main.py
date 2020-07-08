@@ -1,5 +1,3 @@
-# Hold off on prophet image generation, probably not useful since I buy small caps
-
 import sys 
 import argparse as ap
 import pathlib
@@ -16,19 +14,18 @@ from jinja2 import Template
 def main(args):
     end_date = str(date.today())
     gh_pages_name = 'gh-pages'
+
+    # TODO convert to object since this is so complicated
+    # With an object I think it would be easier to parallelize
     for report_cfg_file in glob.glob("lib/cfg/*.yml"):
         report_cfg = get_config(report_cfg_file)
         report_name = report_cfg["name"]
         output_folder = f"{args.output}/{report_name}"
         pathlib.Path(output_folder).mkdir(parents=True, exist_ok=True)
 
-        # Attempt to move the folder
-        # Make in gh pages folder even if exists
         gh_report_folder = f"{args.output}/{gh_pages_name}/{report_name}/{end_date}"
         pathlib.Path(gh_report_folder).mkdir(parents=True, exist_ok=True)
-        # Any files in the output folder, if I need nested files in folders
-        # use something else
-        # NLP EMAIL Template
+
         email_channel_data = []
         # Make channel videos
         for channel in report_cfg["channels"]:
@@ -42,7 +39,9 @@ def main(args):
 
                     with YTNLP(video_id=video_id, html_template='lib/ytube.jinja2') as yt_nlp:
                         file_path = f"{output_folder}/{video_id}.html"
-                        is_generated = yt_nlp.gen_report_for_id(video_id, report_path=file_path, video_data=video_data)
+                        is_generated = False
+                        if channel.get('no_transcript') is not True:
+                            is_generated = yt_nlp.gen_report_for_id(video_id, report_path=file_path, video_data=video_data)
                         
                         # temp array of objects
                         matches_per_vid = []
@@ -59,15 +58,19 @@ def main(args):
                         match_object = video_info
                         match_object['phrases'] = matches_per_vid
                         if is_generated is False:
-                            # If no_transcript is retrieved
-                            # analyze the video_data only
-                            # title and description
                             match_object['has_report'] = False
-                            pass
                         else:
                             match_object['has_report'] = True
-                            pass
-                    email_channel_data.append(match_object)
+                    if channel.get('only_on_nlp_match') is True:
+                        # check for nlp matches
+                        if len(match_object['phrases']) > 0:
+                            email_channel_data.append(match_object)
+                        else:
+                            # track channels that should have video transcripts, but don't
+                            hello = True
+                            # print(f'no matches found for {video_id}')
+                    else:
+                        email_channel_data.append(match_object)
             else:
                 print('Channel not found for')
                 print(channel)

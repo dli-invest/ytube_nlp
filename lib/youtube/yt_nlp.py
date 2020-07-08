@@ -3,7 +3,7 @@ from spacy.matcher import Matcher
 from spacy.lang.en import English
 import json
 from jinja2 import Template
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
 from youtube_transcript_api._errors import TranscriptsDisabled
 from lib.custom_nlp.text_processing import NLPLogic
 # Youtube Natural Language Processing
@@ -39,6 +39,13 @@ class YTNLP(NLPLogic):
             # add logger error here with video id and error type
             print(e)
             return None
+        except NoTranscriptFound as e:
+            print(e)
+            return None
+        except Exception as e:
+            print('Generic Exception')
+            print(e)
+            exit(1)
     
     # Extract entities of interest (person)
     # Extract numerical figures
@@ -69,6 +76,7 @@ class YTNLP(NLPLogic):
                         next_token = doc[token.i + 1]
                         # Check if the next token's text equals "%"
                         if next_token.text == "%":
+                            # Add % to stats
                             print(token)
                             print("Percentage found:", token.text)
                     

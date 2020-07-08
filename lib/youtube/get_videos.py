@@ -35,6 +35,7 @@ def extract_key_video_data(video_data):
         key_video_data.append(video_data)
     return key_video_data
 
+# TODO add params logic in order to set search times
 def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     youtube_api = 'https://www.googleapis.com/youtube/v3/search'
     youtube_api_key = os.getenv("YOUTUBE_API_KEY")
@@ -44,7 +45,7 @@ def search_videos_for_channel(channel_id, params=dict(part='snippet')):
     params['order'] = 'date'
     current_date = datetime.now(timezone.utc)
     publishedBefore = (current_date - timedelta(hours=12)).isoformat()
-    publishedAfter = (current_date - timedelta(hours=96)).isoformat()
+    publishedAfter = (current_date - timedelta(hours=36)).isoformat()
     params['publishedBefore'] = publishedBefore
     params['publishedAfter'] = publishedAfter
     params['maxResults'] = 100
