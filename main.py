@@ -66,6 +66,7 @@ def main(args):
                         if len(match_object['phrases']) > 0:
                             email_channel_data.append(match_object)
                         else:
+                            email_channel_data.append(match_object)
                             # track channels that should have video transcripts, but don't
                             hello = True
                             # print(f'no matches found for {video_id}')
