@@ -33,7 +33,7 @@ def main(args):
             if channel_id is not None:
                 video_data = get_video_data_for_channel(channel_id)
                 for video_info in video_data:
-                    video_id = video_info.get('videoID')
+                    video_id = video_info.get('videoId')
                     title = video_info.get('title')
                     description = video_info.get('description')
 

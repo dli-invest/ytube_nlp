@@ -22,12 +22,12 @@ def extract_key_video_data(video_data):
         snippet = video.get('snippet')
         vid_id = video.get('id')
         
-        videoID = vid_id.get('videoId')
+        videoId = vid_id.get('videoId')
         channelId = snippet.get('channelId')
         description = snippet.get('description')
         title = snippet.get('title')
         video_data = dict(
-            videoID=videoID,
+            videoId=videoId,
             channelId=channelId,
             description=description,
             title=title
