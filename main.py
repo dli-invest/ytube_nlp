@@ -46,14 +46,10 @@ def main(args):
                         # temp array of objects
                         matches_per_vid = []
                         if title is not None:
-                            temp_matches, _ = yt_nlp.stocks_of_interest(title)
-                            matches_per_vid = [*matches_per_vid, *temp_matches]
-                            temp_matches, _ = yt_nlp.stocks_from_exchange(title)
+                            temp_matches, _ = yt_nlp.get_text_matches(title)
                             matches_per_vid = [*matches_per_vid, *temp_matches]
                         if description is not None:
-                            temp_matches, _ = yt_nlp.stocks_of_interest(description)
-                            matches_per_vid = [*matches_per_vid, *temp_matches]
-                            temp_matches, _ = yt_nlp.stocks_from_exchange(description)
+                            temp_matches, _ = yt_nlp.get_text_matches(description)
                             matches_per_vid = [*matches_per_vid, *temp_matches]
                         match_object = video_info
                         match_object['phrases'] = matches_per_vid

@@ -15,6 +15,43 @@ class NLPLogic:
   def __init__(self):
     self.nlp = spacy.load("en_core_web_sm")
 
+  def get_text_matches(self, text):
+    matches = []
+    matched_strings = []
+
+    temp_matched_strings, temp_matches = self.phrases_of_interest(text)
+    matched_strings = [*matched_strings, *temp_matched_strings]
+    matches =  [*matches, *temp_matches]
+
+    temp_matched_strings, temp_matches = self.stocks_of_interest(text)
+    matched_strings = [*matched_strings, *temp_matched_strings]
+    matches =  [*matches, *temp_matches]
+
+    temp_matched_strings, temp_matches = self.stocks_from_exchange(text)
+    matched_strings = [*matched_strings, *temp_matched_strings]
+    matches =  [*matches, *temp_matches]
+
+    return matched_strings, matches
+
+  def phrases_of_interest(self, text):
+    matcher = Matcher(self.nlp.vocab)
+    matcher.add('Tickers Names', None,
+      [{'LOWER': 'trutrace'}],
+      [{'LOWER': 'nextech'}],
+      [{'LOWER': 'imaginear'}],
+      [{'LOWER': 'blockchain'}]
+    )
+    doc = self.nlp(text)
+    matches = matcher(doc)
+    # Iterate and add stocks to the matcher, one by one
+    matched_strings = []
+    for match_id, start, end in matches:
+      string_id = self.nlp.vocab.strings[match_id]  # Get string representation
+      span = doc[start:end]  # The matched span
+      print(match_id, string_id, start, end, span.text)
+      matched_strings.append(span.text)
+    return matched_strings, matches
+
   def stocks_of_interest(self, text):
     """
       Description: Checks a given sentence for stocks of interest
