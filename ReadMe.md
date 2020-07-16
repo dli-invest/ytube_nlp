@@ -9,8 +9,8 @@ python -m lib.yt_nlp -v VuavFEzN6oA
 #### Tasks
 
 **07/04/2020**
-- [ ] Logic to handle youtube channels without subtitles (just parse title and description)
-- [ ] Logic to nlp just titles and descriptions
+- [x] Logic to handle youtube channels without subtitles (just parse title and description)
+- [x] Logic to nlp just titles and descriptions
 - [ ] Email Notifications or something (setup notification on golang server?)
 - [ ] Discord Notifications for key topics (ar, blockchain)
 
