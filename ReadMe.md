@@ -8,11 +8,15 @@ python -m lib.yt_nlp -v VuavFEzN6oA
 
 #### Tasks
 
+**07/21/2020**
+- [x] update nlp logic on match for (ar, blockchain)
+- []
+
 **07/04/2020**
 - [x] Logic to handle youtube channels without subtitles (just parse title and description)
 - [x] Logic to nlp just titles and descriptions
-- [ ] Email Notifications or something (setup notification on golang server?)
-- [ ] Discord Notifications for key topics (ar, blockchain)
+- [x] Email Notifications or something (setup notification on golang server?)
+- [x] Discord Notifications for key topics (ar, blockchain) (not doing)
 
 **07/03/2020**
 - [x] Applied API key to github secrets
