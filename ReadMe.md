@@ -8,9 +8,13 @@ python -m lib.yt_nlp -v VuavFEzN6oA
 
 #### Tasks
 
+Think about analyzing wall street reporter videos for sentiment analysis.
+
+**08/30/2020**
+- [] Added new super stock wall street reporter to youtube nlp
+
 **07/21/2020**
 - [x] update nlp logic on match for (ar, blockchain)
-- []
 
 **07/04/2020**
 - [x] Logic to handle youtube channels without subtitles (just parse title and description)
