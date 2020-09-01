@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>s002-muf6xI</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 's002-muf6xI',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>60.</td>
+                  <td>2.24</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(10.96);">Jump to 10.96</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        60
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>the regular session at 83.55</td>
+                  <td>5.36</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(20.48);">Jump to 20.48</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        83.55
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>cents like josh points out it's a 25</td>
+                  <td>3.599</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(23.6);">Jump to 23.6</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        PERSON
+                      </span>
+                      <span class="uk-label">
+                        josh
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        25
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>billion dollar company now what do you</td>
+                  <td>4.56</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(25.84);">Jump to 25.84</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        billion dollar
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>i owned it at 15 and then bought some</td>
+                  <td>2.961</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(32.239);">Jump to 32.239</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        15
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>more at 30</td>
+                  <td>2.639</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(33.92);">Jump to 33.92</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        30
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>chart if you've bought the stock at 15</td>
+                  <td>2.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(46.399);">Jump to 46.399</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        15
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>and 30</td>
+                  <td>2.719</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(48.32);">Jump to 48.32</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        30
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>you take some off the table at 83 and</td>
+                  <td>3.761</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(49.039);">Jump to 49.039</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        83
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>8703</td>
+                  <td>3.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(100.6);">Jump to 100.6</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        8703
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>august 7th 20 million shares traded</td>
+                  <td>3.28</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(139.36);">Jump to 139.36</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        august 7th
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        20 million
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>of four that's usually something to</td>
+                  <td>4.319</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(142.64);">Jump to 142.64</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        four
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>one suitor the</td>
+                  <td>4.16</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(321.12);">Jump to 321.12</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>between those two suitors</td>
+                  <td>3.679</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(342.24);">Jump to 342.24</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        two
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
