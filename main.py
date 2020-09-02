@@ -123,6 +123,21 @@ def main(args):
             except shutil.Error as e:
                 print(e)
         yt_df.to_csv("yt_data.csv")
+        yt_df = yt_df.sort_values(by=["date"])
+        # yt_df['path'] = yt_df['path'].apply(lambda x: path_to_url(x)) # f'<a href="./{investing/2020-07-09/-5aG8r2fkM0.html}'
+        try:
+            options = dict(
+                HTML_TABLE=yt_df.to_html(
+                    table_id="datatable", classes="uk-table cell-border compact stripe"
+                )
+            )
+            with open("lib/index.jinja2") as file_:
+                template = Template(file_.read())
+            index_html = template.render(**options)
+            with open("report/gh-pages/index.html", "w") as file_:
+                file_.write(index_html)
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":
