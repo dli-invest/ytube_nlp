@@ -29,6 +29,8 @@ def main(args):
 
         email_channel_data = []
         # Make channel videos
+        # This loop isn't extremely expensive as
+        # we are just fetching text from an api
         for channel in report_cfg["channels"]:
             channel_id = channel.get("id")
             if channel_id is not None:
