@@ -34,7 +34,8 @@ def main(args):
         # we are just fetching text from an api
         for channel in report_cfg["channels"]:
             channel_id = channel.get("id")
-            if channel_id is not None:
+            channel_label = channel.get("label")
+            if channel_id != None:
                 video_data = get_video_data_for_channel(channel_id)
                 # loop through videos
                 for video_info in video_data:
@@ -70,11 +71,11 @@ def main(args):
 
                             # append object to pandas dataframe
                             new_file = {
-                                "date": end_date,
+                                "date": publishedAt,
                                 "title": title,
-                                "source": "N/A",
+                                "source": channel_label,
                                 "keywords": [],
-                                "description": "",
+                                "description": description,
                                 "path": file_path,
                             }
                             # df.loc[video_id] = new_file
@@ -118,10 +119,7 @@ def main(args):
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
                 print(e)
-        # Could make into another function
-        yt_df.to_csv("new_yt_data.csv")
-
-        # diff dfs?
+        yt_df.to_csv("yt_data.csv")
 
 
 if __name__ == "__main__":

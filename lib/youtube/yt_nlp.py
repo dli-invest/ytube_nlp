@@ -78,8 +78,9 @@ class YTNLP(NLPLogic):
                         # Check if the next token's text equals "%"
                         if next_token.text == "%":
                             # Add % to stats
-                            print(token)
-                            print("Percentage found:", token.text)
+                            # print(token)
+                            # print("Percentage found:", token.text)
+                            TODO = False
 
                     matched_lines.append(detailed_obj)
                     break

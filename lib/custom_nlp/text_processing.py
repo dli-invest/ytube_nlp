@@ -36,12 +36,14 @@ class NLPLogic:
     def phrases_of_interest(self, text):
         matcher = Matcher(self.nlp.vocab)
         matcher.add(
-            "Tickers Names",
+            "Phrases",
             None,
             [{"LOWER": "trutrace"}],
             [{"LOWER": "nextech"}],
             [{"LOWER": "imaginear"}],
             [{"LOWER": "blockchain"}],
+            [{"LOWER": "cnbc"}, {"LOWER": "after"}, {"LOWER": "hours"}],
+            [{"LOWER": "coronavirus"}],
         )
         doc = self.nlp(text)
         matches = matcher(doc)
