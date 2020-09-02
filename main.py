@@ -40,6 +40,9 @@ def main(args):
                 # loop through videos
                 for video_info in video_data:
                     video_id = video_info.get("videoId")
+                    # skip if video found already
+                    if video_id in yt_df.index:
+                        continue
                     title = video_info.get("title")
                     description = video_info.get("description")
                     publishedAt = video_info.get("publishedAt")
