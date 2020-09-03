@@ -3,6 +3,7 @@ import argparse as ap
 import pathlib
 import glob
 import shutil
+import pandas as pd
 from jinja2 import Template
 from datetime import date, datetime
 from lib.util import get_config
@@ -12,10 +13,17 @@ from lib.email import send_mailjet_email
 from jinja2 import Template
 
 
+def path_to_url(url: str) -> str:
+    if url == "":
+        return None
+    base_url = "http://dli-invest.github.io/ytube_nlp"
+    return f"{base_url}/{url}"
+
+
 def main(args):
     end_date = str(date.today())
     gh_pages_name = "gh-pages"
-
+    yt_df = pd.read_csv("yt_data.csv", index_col="video_id")
     # TODO convert to object since this is so complicated
     # With an object I think it would be easier to parallelize
     for report_cfg_file in glob.glob("lib/cfg/*.yml"):
@@ -29,21 +37,29 @@ def main(args):
 
         email_channel_data = []
         # Make channel videos
+        # This loop isn't extremely expensive as
+        # we are just fetching text from an api
         for channel in report_cfg["channels"]:
             channel_id = channel.get("id")
-            if channel_id is not None:
+            channel_label = channel.get("label")
+            if channel_id != None:
                 video_data = get_video_data_for_channel(channel_id)
+                # loop through videos
                 for video_info in video_data:
                     video_id = video_info.get("videoId")
+                    # skip if video found already
+                    if video_id in yt_df.index:
+                        continue
                     title = video_info.get("title")
                     description = video_info.get("description")
+                    publishedAt = video_info.get("publishedAt")
 
                     with YTNLP(
                         video_id=video_id, html_template="lib/ytube.jinja2"
                     ) as yt_nlp:
                         file_path = f"{output_folder}/{video_id}.html"
                         is_generated = False
-                        if channel.get("no_transcript") is not True:
+                        if channel.get("no_transcript") != True:
                             is_generated = yt_nlp.gen_report_for_id(
                                 video_id, report_path=file_path, video_data=video_data
                             )
@@ -62,6 +78,29 @@ def main(args):
                             match_object["has_report"] = False
                         else:
                             match_object["has_report"] = True
+
+                            # append object to pandas dataframe
+                            new_file = {
+                                "date": publishedAt,
+                                "title": title,
+                                "source": channel_label,
+                                "keywords": [],
+                                "description": description,
+                                "path": file_path,
+                            }
+                            # df.loc[video_id] = new_file
+                            if video_id in yt_df.index:
+                                print(f"Video {video_id} exists - not setting vid_id")
+                            else:
+                                print("adding row")
+                                # add row to df
+                                yt_df = yt_df.append(
+                                    pd.Series(
+                                        new_file, index=yt_df.columns, name=video_id
+                                    )
+                                )
+                                print(new_file)
+
                     if channel.get("only_on_nlp_match") is True:
                         # check for nlp matches
                         if len(match_object["phrases"]) > 0:
@@ -90,7 +129,26 @@ def main(args):
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
                 print(e)
-        # Could make into another function
+        yt_df = yt_df.sort_values(by=["date"], ascending=False)
+        yt_df.to_csv("yt_data.csv")
+        yt_df["path"] = yt_df["path"].apply(
+            lambda x: path_to_url(x)
+        )  # f'<a href="./{investing/2020-07-09/-5aG8r2fkM0.html}'
+        try:
+            options = dict(
+                HTML_TABLE=yt_df.to_html(
+                    table_id="datatable",
+                    classes="uk-table cell-border compact stripe",
+                    render_links=True,
+                )
+            )
+            with open("lib/index.jinja2") as file_:
+                template = Template(file_.read())
+            index_html = template.render(**options)
+            with open("report/gh-pages/index.html", "w") as file_:
+                file_.write(index_html)
+        except Exception as e:
+            print(e)
 
 
 if __name__ == "__main__":

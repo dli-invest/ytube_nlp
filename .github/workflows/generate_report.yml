@@ -46,6 +46,19 @@ jobs:
           git checkout $GH_PAGES_BRANCH
       - name: Generate Report
         run:  python main.py
+      
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add *.csv
+          git commit -m "Updated yt_data.csv"
+          ls report/gh-pages
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
       - uses: actions/upload-artifact@v1
         name: Upload Report folder
@@ -66,7 +79,6 @@ jobs:
           date=$(date '+%Y-%m-%d')
           echo $(date '+%Y-%m-%d')
           cd report/$GH_PAGES_BRANCH
-          tree -H '.' -L 4 --noreport --charset utf-8 > index.html
           git add .
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action $date"
