@@ -10,8 +10,12 @@ python -m lib.yt_nlp -v VuavFEzN6oA
 
 Think about analyzing wall street reporter videos for sentiment analysis.
 
+**09/02/2020**
+- [x] Fixed issues with sending new data needed `to_dict('records')` instead of `to_dict()`
+- [x] Improved index.html file
+
 **08/30/2020**
-- [] Added new super stock wall street reporter to youtube nlp
+- [x] Added new super stock wall street reporter to youtube nlp
 
 **07/21/2020**
 - [x] update nlp logic on match for (ar, blockchain)
