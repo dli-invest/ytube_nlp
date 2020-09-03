@@ -13,6 +13,13 @@ from lib.email import send_mailjet_email
 from jinja2 import Template
 
 
+def path_to_url(url: str) -> str:
+    if url == "":
+        return None
+    base_url = "http://dli-invest.github.io/ytube_nlp"
+    return f"{base_url}/{url}"
+
+
 def main(args):
     end_date = str(date.today())
     gh_pages_name = "gh-pages"
@@ -122,13 +129,17 @@ def main(args):
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
                 print(e)
+        yt_df = yt_df.sort_values(by=["date"], ascending=False)
         yt_df.to_csv("yt_data.csv")
-        yt_df = yt_df.sort_values(by=["date"])
-        # yt_df['path'] = yt_df['path'].apply(lambda x: path_to_url(x)) # f'<a href="./{investing/2020-07-09/-5aG8r2fkM0.html}'
+        yt_df["path"] = yt_df["path"].apply(
+            lambda x: path_to_url(x)
+        )  # f'<a href="./{investing/2020-07-09/-5aG8r2fkM0.html}'
         try:
             options = dict(
                 HTML_TABLE=yt_df.to_html(
-                    table_id="datatable", classes="uk-table cell-border compact stripe"
+                    table_id="datatable",
+                    classes="uk-table cell-border compact stripe",
+                    render_links=True,
                 )
             )
             with open("lib/index.jinja2") as file_:

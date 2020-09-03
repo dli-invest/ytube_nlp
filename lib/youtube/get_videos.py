@@ -51,7 +51,7 @@ def search_videos_for_channel(channel_id, params=dict(part="snippet")):
     params["order"] = "date"
     current_date = datetime.now(timezone.utc)
     # hardcoded fix for now, only query for videos in august
-    publishedAfter = (current_date - timedelta(days=3)).isoformat()
+    publishedAfter = (current_date - timedelta(days=1)).isoformat()
     params["publishedAfter"] = publishedAfter
     params["maxResults"] = 100
     params["key"] = youtube_api_key
