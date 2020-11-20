@@ -7,7 +7,7 @@ from datetime import datetime, timezone, timedelta
 def main(args):
     channel_id = args.channel
     video_data = get_video_data_for_channel(channel_id)
-    print(video_data)
+    return video_data
 
 
 def get_video_data_for_channel(channel_id):
@@ -58,7 +58,7 @@ def search_videos_for_channel(channel_id, params=dict(part="snippet")):
     params["key"] = youtube_api_key
 
     r = requests.get(youtube_api, params=params).json()
-
+    print(r)
     # Check if an error object is present
     if r.get("error") is not None:
         print(r)
@@ -76,4 +76,4 @@ if __name__ == "__main__":
     )
     # Add video parsing logic
     args = parser.parse_args()
-    main(args)
+    video_data = main(args)
