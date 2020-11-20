@@ -7,6 +7,7 @@ from datetime import datetime, timezone, timedelta
 def main(args):
     channel_id = args.channel
     video_data = get_video_data_for_channel(channel_id)
+    print(video_data)
 
 
 def get_video_data_for_channel(channel_id):
@@ -71,7 +72,8 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
-        "-c", "--channel", help="Youtube Video Id", default="UC6zHYEnBuH4DYxbPLsbIaVw"
+        "-c", "--channel", help="Youtube Channel Id", default="UC6zHYEnBuH4DYxbPLsbIaVw"
     )
+    # Add video parsing logic
     args = parser.parse_args()
     main(args)

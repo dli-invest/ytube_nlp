@@ -57,8 +57,11 @@ def main(args):
                     with YTNLP(
                         video_id=video_id, html_template="lib/ytube.jinja2"
                     ) as yt_nlp:
-                        file_path = f"{output_folder}/{video_id}.html"
+                        # this is adjusted with a date for the gh pages step
+                        file_path = f"{output_folder}/{end_date}/{video_id}.html"
                         is_generated = False
+                        # Since I intend to only use transcript videos
+                        # this line doesnt matter
                         if channel.get("no_transcript") != True:
                             is_generated = yt_nlp.gen_report_for_id(
                                 video_id, report_path=file_path, video_data=video_data
