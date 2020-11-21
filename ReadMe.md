@@ -6,6 +6,8 @@ To run subdirectory scripts use
 python -m lib.yt_nlp -v VuavFEzN6oA
 ```
 
+Note the cron jobs are 24 hours delayed in order to get transcripts.
+
 #### Tasks
 
 Think about analyzing wall street reporter videos for sentiment analysis.
