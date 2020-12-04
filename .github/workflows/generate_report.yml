@@ -87,7 +87,7 @@ jobs:
           git push || true
 
       - uses: sarisia/actions-status-discord@v1
-        if: always()
+        if: ${{ job.status }} == 'failure'
         with:
           webhook: ${{ secrets.DISCORD_CODE_STATUS_WEBHOOK }}
           status: ${{ job.status }}
