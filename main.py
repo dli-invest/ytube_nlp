@@ -22,6 +22,7 @@ def path_to_url(url: str) -> str:
 
 def main(args):
     end_date = str(date.today())
+    gh_report_folder_next = str(date.today())
     gh_pages_name = "gh-pages"
     yt_df = pd.read_csv("yt_data.csv", index_col="video_id")
     # TODO convert to object since this is so complicated
@@ -34,6 +35,10 @@ def main(args):
 
         gh_report_folder = f"{args.output}/{gh_pages_name}/{report_name}/{end_date}"
         pathlib.Path(gh_report_folder).mkdir(parents=True, exist_ok=True)
+        gh_report_folder2 = (
+            f"{args.output}/{gh_pages_name}/{report_name}/{gh_report_folder_next}"
+        )
+        pathlib.Path(gh_report_folder2).mkdir(parents=True, exist_ok=True)
 
         email_channel_data = []
         # Make channel videos
