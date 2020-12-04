@@ -13,6 +13,7 @@ env:
   GH_PAGES_BRANCH: gh-pages
   MJ_APIKEY_PUBLIC: ${{ secrets.MJ_APIKEY_PUBLIC }}
   MJ_APIKEY_PRIVATE: ${{ secrets.MJ_APIKEY_PRIVATE }}
+  DISCORD_CODE_STATUS_WEBHOOK: ${{ secrets.DISCORD_CODE_STATUS_WEBHOOK }}
 
 jobs:
   make_report:
@@ -88,13 +89,12 @@ jobs:
       - uses: sarisia/actions-status-discord@v1
         if: always()
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_CODE_STATUS_WEBHOOK }}
           status: ${{ job.status }}
-          title: "deploy"
+          title: ${{github.repository}}
           description: "Build and deploy to GitHub Pages"
           nofail: false
           nocontext: false
           noprefix: false
           color: 0x0000ff
           username: GitHub Actions
-          avatar_url: ${{ secrets.AVATAR_URL }}
