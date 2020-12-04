@@ -22,7 +22,8 @@ def path_to_url(url: str) -> str:
 
 def main(args):
     end_date = str(date.today())
-    gh_report_folder_next = str(date.today())
+    tomorrow = end_date + datetime.timedelta(1)
+    gh_report_folder_next = str(datetime.strftime(tomorrow, '%Y-%m-%d'))
     gh_pages_name = "gh-pages"
     yt_df = pd.read_csv("yt_data.csv", index_col="video_id")
     # TODO convert to object since this is so complicated
@@ -63,6 +64,10 @@ def main(args):
                         video_id=video_id, html_template="lib/ytube.jinja2"
                     ) as yt_nlp:
                         # this is adjusted with a date for the gh pages step
+                        file_folder1 = f"{output_folder}/{gh_report_folder_next}/{video_id}"
+                        file_folder2 = f"{output_folder}/{end_date}/{video_id}"
+                        pathlib.Path(file_folder1).mkdir(parents=True, exist_ok=True)
+                        pathlib.Path(file_folder2).mkdir(parents=True, exist_ok=True)
                         file_path = f"{output_folder}/{end_date}/{video_id}.html"
                         is_generated = False
                         # Since I intend to only use transcript videos

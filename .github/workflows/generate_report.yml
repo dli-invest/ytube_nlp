@@ -84,3 +84,17 @@ jobs:
           git config --local user.name "GitHub Action $date"
           git commit -m "Add changes $date" -a || true
           git push || true
+
+      - uses: sarisia/actions-status-discord@v1
+        if: always()
+        with:
+          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          status: ${{ job.status }}
+          title: "deploy"
+          description: "Build and deploy to GitHub Pages"
+          nofail: false
+          nocontext: false
+          noprefix: false
+          color: 0x0000ff
+          username: GitHub Actions
+          avatar_url: ${{ secrets.AVATAR_URL }}
