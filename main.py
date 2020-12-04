@@ -22,8 +22,8 @@ def path_to_url(url: str) -> str:
 
 def main(args):
     end_date = str(date.today())
-    tomorrow = end_date + timedelta(1)
-    gh_report_folder_next = str(datetime.strftime(tomorrow, '%Y-%m-%d'))
+    tomorrow = date.today() + timedelta(1)
+    gh_report_folder_next = datetime.strftime(tomorrow, '%Y-%m-%d')
     gh_pages_name = "gh-pages"
     yt_df = pd.read_csv("yt_data.csv", index_col="video_id")
     # TODO convert to object since this is so complicated
