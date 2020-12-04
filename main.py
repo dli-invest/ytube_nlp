@@ -5,7 +5,7 @@ import glob
 import shutil
 import pandas as pd
 from jinja2 import Template
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from lib.util import get_config
 from lib.youtube.get_videos import get_video_data_for_channel
 from lib.youtube.yt_nlp import YTNLP
@@ -22,7 +22,7 @@ def path_to_url(url: str) -> str:
 
 def main(args):
     end_date = str(date.today())
-    tomorrow = end_date + datetime.timedelta(1)
+    tomorrow = end_date + timedelta(1)
     gh_report_folder_next = str(datetime.strftime(tomorrow, '%Y-%m-%d'))
     gh_pages_name = "gh-pages"
     yt_df = pd.read_csv("yt_data.csv", index_col="video_id")
