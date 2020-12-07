@@ -3,7 +3,7 @@ import os
 import sys
 from datetime import datetime, timezone, timedelta
 
-
+REF_DAYS=1
 def main(args):
     channel_id = args.channel
     video_data = get_video_data_for_channel(channel_id)
@@ -22,11 +22,15 @@ def extract_key_video_data(video_data):
     key_video_data = []
     if video_data is None or video_data is []:
         return
+    # video id is None do nothing, it happens during livestreams
+    # before publishing
     for video in video_data.get("items"):
         snippet = video.get("snippet")
         vid_id = video.get("id")
 
-        videoId = vid_id.get("videoId")
+        videoId = vid_id.get("videoId", None)
+        if videoId == None:
+            continue
         channelId = snippet.get("channelId")
         description = snippet.get("description")
         title = snippet.get("title")
@@ -52,7 +56,7 @@ def search_videos_for_channel(channel_id, params=dict(part="snippet")):
     params["order"] = "date"
     current_date = datetime.now(timezone.utc)
     # hardcoded fix for now, only query for videos in august
-    publishedAfter = (current_date - timedelta(days=1)).isoformat()
+    publishedAfter = (current_date - timedelta(days=REF_DAYS)).isoformat()
     params["publishedAfter"] = publishedAfter
     params["maxResults"] = 100
     params["key"] = youtube_api_key

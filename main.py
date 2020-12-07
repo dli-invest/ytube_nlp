@@ -4,14 +4,14 @@ import pathlib
 import glob
 import shutil
 import pandas as pd
-from jinja2 import Template
+
 from datetime import date, datetime, timedelta
 from lib.util import get_config
 from lib.youtube.get_videos import get_video_data_for_channel
 from lib.youtube.yt_nlp import YTNLP
 from lib.email import send_mailjet_email
 from jinja2 import Template
-
+from lib.util.send_discord import send_data_to_discord
 
 def path_to_url(url: str) -> str:
     if url == "":
@@ -123,6 +123,12 @@ def main(args):
             else:
                 print("Channel not found for")
                 print(channel)
+        # Try to send data to discord
+        try:
+            send_data_to_discord(email_channel_data)
+        except Exception as e:
+            print(e)
+            pass
         # Move to function or something or rewrite to class
         try:
             options = dict(Version="1.0.0", EMAIL_DATA=email_channel_data)
@@ -133,6 +139,7 @@ def main(args):
             send_mailjet_email(report_cfg, email_html)
             with open("report/investing/email.html", "w", errors="ignore") as f:
                 f.write(email_html)
+
         except Exception as e:
             print("FAILED TO MAKE TEMPLATE")
             print(e)
@@ -163,7 +170,6 @@ def main(args):
         except Exception as e:
             print(e)
 
-
 if __name__ == "__main__":
     assert sys.version_info >= (3, 6)
     startTime = datetime.now()
@@ -172,6 +178,8 @@ if __name__ == "__main__":
     parser.add_argument(
         "-t", "--template", help="Template file", default="lib/ytube.jinja2"
     )
+    # Ensure keys are available
+
     args = parser.parse_args()
     main(args)
     print("Script Complete")

@@ -44,6 +44,7 @@ class NLPLogic:
             [{"LOWER": "blockchain"}],
             [{"LOWER": "cnbc"}, {"LOWER": "after"}, {"LOWER": "hours"}],
             [{"LOWER": "coronavirus"}],
+            [{"LOWER": "cramer"}],
         )
         doc = self.nlp(text)
         matches = matcher(doc)
