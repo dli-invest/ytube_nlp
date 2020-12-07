@@ -34,7 +34,7 @@ def main(args):
         output_folder = f"{args.output}/{report_name}"
         pathlib.Path(output_folder).mkdir(parents=True, exist_ok=True)
 
-        gh_report_folder = f"{args.output}/{gh_pages_name}/{report_name}/{end_date}"
+        gh_report_folder = f"{args.output}/{gh_pages_name}/{report_name}"
         pathlib.Path(gh_report_folder).mkdir(parents=True, exist_ok=True)
         gh_report_folder2 = (
             f"{args.output}/{gh_pages_name}/{report_name}/{gh_report_folder_next}"
@@ -143,9 +143,11 @@ def main(args):
         except Exception as e:
             print("FAILED TO MAKE TEMPLATE")
             print(e)
+        # this includes folders, need to correct my output folder to be nested one more
         for report_file in glob.glob(f"{output_folder}/*"):
             try:
                 # Move report files
+                # gh report folder expected to be gh-pages/subcategory/date
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
                 print(e)
