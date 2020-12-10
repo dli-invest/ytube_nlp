@@ -19,6 +19,12 @@ def send_data_to_discord(channel_data):
             "title": f"{title}",
             "description": f"{description}",
             "url": f"{report_path}",
+            "fields": [
+                {
+                    "name": "youtube",
+                    "value": video_link
+                }
+            ],
             "footer": {
                 "text": channel_label,
             },
