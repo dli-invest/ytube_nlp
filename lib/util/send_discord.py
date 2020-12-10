@@ -4,7 +4,6 @@ import requests
 from datetime import date
 
 def send_data_to_discord(channel_data):
-    print(channel_data)
     base_url = "http://dli-invest.github.io/ytube_nlp"
     def make_embed(list_item):
         videoId = list_item.get('videoId')
@@ -12,10 +11,17 @@ def send_data_to_discord(channel_data):
         title = list_item.get('title')
         end_date = str(date.today())
         report_path = f"{base_url}/investing/{end_date}/{videoId}.html"
+        published_at = list_item.get('publishedAt')
+        channel_label = list_item.get('source')
+        video_link = f"[{videoId}](https://www.youtube.com/watch?v={videoId})"
         return {
-            "title": f"Annotation for {title}",
-            "description": f"Video from {channelId} for {videoId}",
-            "url": f"{report_path}"
+            "title": f"{title}",
+            "description": f"Video from {channelId} for {video_link}",
+            "url": f"{report_path}",
+            "footer": {
+                "text": channel_label,
+            },
+            "timestamp": published_at
         }
     def chunks(l, n):
         n = max(1, n)

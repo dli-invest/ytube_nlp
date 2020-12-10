@@ -87,6 +87,7 @@ def main(args):
                             matches_per_vid = [*matches_per_vid, *temp_matches]
                         match_object = video_info
                         match_object["phrases"] = matches_per_vid
+                        match_object["source"] = channel_label
                         if is_generated is False:
                             match_object["has_report"] = False
                         else:
