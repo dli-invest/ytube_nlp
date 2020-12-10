@@ -13,10 +13,11 @@ def send_data_to_discord(channel_data):
         report_path = f"{base_url}/investing/{end_date}/{videoId}.html"
         published_at = list_item.get('publishedAt')
         channel_label = list_item.get('source')
+        description = list_item.get('description')[0:1950]
         video_link = f"[{videoId}](https://www.youtube.com/watch?v={videoId})"
         return {
             "title": f"{title}",
-            "description": f"Video from {channelId} for {video_link}",
+            "description": f"{description}",
             "url": f"{report_path}",
             "footer": {
                 "text": channel_label,
