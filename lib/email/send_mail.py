@@ -11,7 +11,7 @@ def send_mailjet_email(cfg, html):
             {
                 "From": {"Email": cfg["email"]["from"], "Name": "Youtube NLP"},
                 "To": [{"Email": cfg["email"]["to"], "Name": "Stock Investor"}],
-                "Subject": "Job Report",
+                "Subject": "Youtube Videos",
                 "HTMLPart": html,
             }
         ]
