@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Z_Xyo3_ZOis</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'Z_Xyo3_ZOis',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>it's hitting a two-week high if you look</td>
+                  <td>2.4</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(27.199);">Jump to 27.199</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        two-week
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>yeah lawrence one more quick one to you</td>
+                  <td>3.921</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(62.079);">Jump to 62.079</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>like a 350 dollar differential between</td>
+                  <td>2.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(84.32);">Jump to 84.32</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        350 dollar
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>at one point in the year was it 4200 so</td>
+                  <td>3.92</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(129.36);">Jump to 129.36</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        the year
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        4200
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>there's one called sos limited</td>
+                  <td>4.96</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(176.08);">Jump to 176.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        sos
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>three of the top five most traded names</td>
+                  <td>4.72</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(191.2);">Jump to 191.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        three
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        five
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>similar to 2017 when we saw names like</td>
+                  <td>4.08</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(195.92);">Jump to 195.92</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2017
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>that stock in 2017 really traded right</td>
+                  <td>4.481</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(204.159);">Jump to 204.159</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2017
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
