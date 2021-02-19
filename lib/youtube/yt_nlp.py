@@ -6,7 +6,7 @@ from jinja2 import Template
 from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
 from youtube_transcript_api._errors import TranscriptsDisabled
 from lib.custom_nlp.text_processing import NLPLogic
-
+from icecream import ic
 # Youtube Natural Language Processing
 class YTNLP(NLPLogic):
     # Initializer / Instance Attributes
@@ -44,9 +44,9 @@ class YTNLP(NLPLogic):
             print(e)
             return None
         except Exception as e:
-            print("Generic Exception")
-            print(e)
-            exit(1)
+            ic("Generic Exception")
+            ic(e)
+            return None
 
     # Extract entities of interest (person)
     # Extract numerical figures
