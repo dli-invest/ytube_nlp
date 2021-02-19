@@ -100,7 +100,8 @@ def main(args):
                                 "source": channel_label,
                                 "keywords": [],
                                 "description": description,
-                                "path": file_path,
+                                # path to access file from website, need to control and replace all files again.
+                                "path": f"{report_name}/{end_date}/{video_id}.html",
                             }
                             # df.loc[video_id] = new_file
                             if video_id in yt_df.index:
