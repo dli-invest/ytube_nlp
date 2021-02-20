@@ -3,12 +3,26 @@
 To run subdirectory scripts use
 
 ```
-python -m lib.yt_nlp -v VuavFEzN6oA
+python -m lib.youtube.yt_nlp -v VuavFEzN6oA
 ```
 
 Note the cron jobs are 24 hours delayed in order to get transcripts.
 
 #### Tasks
+
+- [ ] Text summarization
+- [ ] Back to home button
+- [ ] Sentiment analysis average for video
+- [ ] More nlp options
+- [ ] Update Page titles
+- [ ] Improving searching - index pages per channel? Or filters per channel name?
+
+**02/20/2021**
+
+- [x] adding icecream
+- [x] fixing links
+
+Since youtube seems to get transcripts for every video now, I can start adding more videos to scan.
 
 Think about analyzing wall street reporter videos for sentiment analysis.
 
