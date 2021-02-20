@@ -147,10 +147,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "-t", "--template", help="Template file", default="lib/ytube.jinja2"
     )
+    parser.add_argument(
+       "-o", "--output", help="output", default="index.html"
+    )
     args = parser.parse_args()
     video_id = args.video
     html_template = args.template
     youtube_nlp = YTNLP(video_id, html_template=html_template)
     transcript = youtube_nlp.fetch_transcript()
     youtube_nlp.find_matches(transcript)
-    youtube_nlp.make_report_simple()
+    youtube_nlp.make_report_simple(args.output)
