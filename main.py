@@ -107,14 +107,17 @@ def main(args):
                             if video_id in yt_df.index:
                                 print(f"Video {video_id} exists - not setting vid_id")
                             else:
-                                print("adding row")
-                                # add row to df
-                                yt_df = yt_df.append(
-                                    pd.Series(
-                                        new_file, index=yt_df.columns, name=video_id
+                                if is_generated:
+                                    print("adding row")
+                                    # add row to df
+                                    yt_df = yt_df.append(
+                                        pd.Series(
+                                            new_file, index=yt_df.columns, name=video_id
+                                        )
                                     )
-                                )
-                                print(new_file)
+                                    print(new_file)
+                                else:
+                                    print("Updating is_generate flag")
 
                     if channel.get("only_on_nlp_match") is True:
                         # check for nlp matches
