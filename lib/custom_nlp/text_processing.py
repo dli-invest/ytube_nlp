@@ -1,7 +1,7 @@
 import spacy
 from spacy.matcher import Matcher
 from spacy.lang.en import English
-from lib.custom_nlp.patterns import cse_pattern, tsx_pattern
+from lib.custom_nlp.patterns import cse_pattern, tsx_pattern, stock_phrases
 
 try:
     from lib.custom_nlp.curr_tickers import stocks as stock_names
@@ -34,17 +34,10 @@ class NLPLogic:
         return matched_strings, matches
 
     def phrases_of_interest(self, text):
-        matcher = Matcher(self.nlp.vocab)
+        matcher = Matcher(self.nlp.vocab, validate=True)
         matcher.add(
             "Phrases",
-            None,
-            [{"LOWER": "trutrace"}],
-            [{"LOWER": "nextech"}],
-            [{"LOWER": "imaginear"}],
-            [{"LOWER": "blockchain"}],
-            [{"LOWER": "cnbc"}, {"LOWER": "after"}, {"LOWER": "hours"}],
-            [{"LOWER": "coronavirus"}],
-            [{"LOWER": "cramer"}],
+            stock_phrases
         )
         doc = self.nlp(text)
         matches = matcher(doc)
@@ -65,12 +58,8 @@ class NLPLogic:
           matches: spacy matches
         """
         stock_patterns = [{"LOWER": stock} for stock in stock_names if len(stock) > 1]
-
         matcher = Matcher(self.nlp.vocab)
-        for stock_pattern in stock_patterns:
-            stock_name = stock_pattern.get("LOWER")
-            if stock_name != None:
-                matcher.add(stock_name, None, [stock_pattern])
+        matcher.add("stocks_patterns", [stock_patterns])
         doc = self.nlp(text)
 
         matches = matcher(doc)
@@ -92,7 +81,7 @@ class NLPLogic:
         """
         matcher = Matcher(self.nlp.vocab)
         doc = self.nlp(text)
-        matcher.add("TICKERS", None, cse_pattern, tsx_pattern)
+        matcher.add("TICKERS", [cse_pattern, tsx_pattern])
         matches = matcher(doc)
 
         matched_strings = []
