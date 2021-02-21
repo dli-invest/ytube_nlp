@@ -64,7 +64,7 @@ class NLPLogic:
 
         matches = matcher(doc)
         # Iterate and add stocks to the matcher, one by one
-        # matched_strings = []
+        matched_strings = []
         # for match_id, start, end in matches:
         #     string_id = self.nlp.vocab.strings[match_id]  # Get string representation
         #     span = doc[start:end]  # The matched span
