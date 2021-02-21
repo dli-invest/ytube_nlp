@@ -2,7 +2,7 @@ import spacy
 from spacy.matcher import Matcher
 from spacy.lang.en import English
 from lib.custom_nlp.patterns import cse_pattern, tsx_pattern, stock_phrases
-
+import re
 try:
     from lib.custom_nlp.curr_tickers import stocks as stock_names
 except ImportError as e:
@@ -57,18 +57,31 @@ class NLPLogic:
           matched_strings: String matches from text
           matches: spacy matches
         """
-        stock_patterns = [{"LOWER": stock} for stock in stock_names if len(stock) > 1]
+        stock_patterns = [{"TEXT": {"REGEX": f"{stock}"}} for stock in stock_names if len(stock) > 1]
         matcher = Matcher(self.nlp.vocab)
         matcher.add("stocks_patterns", [stock_patterns])
         doc = self.nlp(text)
 
         matches = matcher(doc)
         # Iterate and add stocks to the matcher, one by one
-        matched_strings = []
-        for match_id, start, end in matches:
-            string_id = self.nlp.vocab.strings[match_id]  # Get string representation
-            span = doc[start:end]  # The matched span
-            matched_strings.append(span.text)
+        # matched_strings = []
+        # for match_id, start, end in matches:
+        #     string_id = self.nlp.vocab.strings[match_id]  # Get string representation
+        #     span = doc[start:end]  # The matched span
+        #     print(match_id, string_id, start, end, span.text)
+        
+        # https://spacy.io/usage/rule-based-matching
+        for stock in stock_names:
+            for match in re.finditer(stock, doc.text, flags=re.IGNORECASE):
+                start, end = match.span()
+                span = doc.char_span(start, end)
+                # This is a Span object or None if match doesn't map to valid token sequence
+                if span is not None:
+                    matched_strings.append(span.text)
+        # for match_id, start, end in matches:
+        #     string_id = self.nlp.vocab.strings[match_id]  # Get string representation
+        #     span = doc[start:end]  # The matched span
+        #     matched_strings.append(span.text)
         return matched_strings, matches
 
     def stocks_from_exchange(self, text):
@@ -81,7 +94,8 @@ class NLPLogic:
         """
         matcher = Matcher(self.nlp.vocab)
         doc = self.nlp(text)
-        matcher.add("TICKERS", [cse_pattern, tsx_pattern])
+        matcher.add("CSE_TICKERS", [cse_pattern])
+        matcher.add("TSX_TICKERS", [tsx_pattern])
         matches = matcher(doc)
 
         matched_strings = []
@@ -89,6 +103,8 @@ class NLPLogic:
             string_id = self.nlp.vocab.strings[match_id]  # Get string representation
             span = doc[start:end]  # The matched span
             matched_strings.append(span.text)
+            print(matches)
+        print(matched_strings)
         return matched_strings, matches
 
     def __exit__(self, exc_type, exc_value, traceback):

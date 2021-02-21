@@ -1,8 +1,7 @@
 # Move patterns to file for reusablity
 cse_pattern = [
     {"TEXT": {"REGEX": "(?i)CSE|CVE"}},
-    {"IS_PUNCT": True, "OP": "?"},
-    {"ENT_TYPE": "ORG"},
+    {"IS_PUNCT": True, "OP": "?"}
 ]
 
 tsx_pattern = [

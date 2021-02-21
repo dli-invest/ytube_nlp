@@ -6,13 +6,15 @@ class TestNLPLogic(unittest.TestCase):
     def setUp(self):
         self.nlpLogic = NLPLogic()
 
+
+    # note organization logic has changed
     def test_stock_exchange_cse(self):
         cse = """ The North American Marijuana 
           Index fell to 94% today. Tilt Holdings (CSE: TILT) (OTCQB: TLLTF) 
           fell more than 7% today. While the Cambridge
         """
         matched_strings, _ = self.nlpLogic.stocks_from_exchange(cse)
-        assert matched_strings[0] == "CSE: TILT"
+        assert matched_strings[0] == "CSE"
 
     def test_stock_exchange_cve(self):
         cse = """ The North American Marijuana 
@@ -20,7 +22,7 @@ class TestNLPLogic(unittest.TestCase):
           fell more than 7% today. While the Cambridge
         """
         matched_strings, _ = self.nlpLogic.stocks_from_exchange(cse)
-        assert matched_strings[0] == "CVE: TILT"
+        assert matched_strings[0] == "CVE"
 
     def test_stock_exchange_tsx(self):
         tsx = """ Integra Resources Corp. (TSX-V:ITR)
