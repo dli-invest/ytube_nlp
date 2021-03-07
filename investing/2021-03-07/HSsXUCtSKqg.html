@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>HSsXUCtSKqg</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'HSsXUCtSKqg',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>the senate is likely to pass this 1.9</td>
+                  <td>5.84</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(0.08);">Jump to 0.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        senate
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>trillion dollar stimulus bill and the</td>
+                  <td>3.041</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(3.439);">Jump to 3.439</a></td>
+                  <td>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>really by 75 000 a year of income or 150</td>
+                  <td>5.361</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(27.519);">Jump to 27.519</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        75 000
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        150
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>000 for a couple</td>
+                  <td>4.321</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(31.679);">Jump to 31.679</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        000
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>because you have people making 200 000</td>
+                  <td>4.72</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(40.8);">Jump to 40.8</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        200
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>people who are making forty thousand</td>
+                  <td>2.879</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(45.52);">Jump to 45.52</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        QUANTITY
+                      </span>
+                      <span class="uk-label">
+                        forty thousand
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>had an eight to twelve month emergency</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(50.16);">Jump to 50.16</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        an eight to twelve month
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>so those people and those are like 10</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(67.52);">Jump to 67.52</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        10
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>million of them it doesn't actually do</td>
+                  <td>2.561</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(69.439);">Jump to 69.439</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        million
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>said an eight to 12 month emergency fund</td>
+                  <td>5.04</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(103.68);">Jump to 103.68</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        an eight to 12 month
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>do you remember back in 2007 2008</td>
+                  <td>6.799</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(242.0);">Jump to 242.0</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2007 2008
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+                <tr>
+                  <td>300 if you close down your credit card</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(262.479);">Jump to 262.479</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        300
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td>0.0</td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
