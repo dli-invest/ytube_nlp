@@ -101,7 +101,7 @@ class YTNLP(NLPLogic):
         pass
 
     def make_report_complex(self, options=dict(), report_path="index.html"):
-        with open(self.html_template) as file_:
+        with open(self.html_template, errors='ignore') as file_:
             template = Template(file_.read())
 
         renderer_template = template.render(**options)

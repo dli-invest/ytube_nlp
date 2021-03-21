@@ -12,6 +12,7 @@ from lib.youtube.yt_nlp import YTNLP
 from lib.email import send_mailjet_email
 from jinja2 import Template
 from lib.util.send_discord import send_data_to_discord
+from icecream import ic
 
 def path_to_url(url: str) -> str:
     if url == "":
@@ -126,13 +127,13 @@ def main(args):
                     else:
                         email_channel_data.append(match_object)
             else:
-                print("Channel not found for")
-                print(channel)
+                ic("Channel not found for")
+                ic(channel)
         # Try to send data to discord
         try:
             send_data_to_discord(email_channel_data)
         except Exception as e:
-            print(e)
+            ic(e)
             pass
         # Move to function or something or rewrite to class
         try:
@@ -141,13 +142,14 @@ def main(args):
                 template = Template(file_.read())
             email_html = template.render(**options)
             # send email
+            ic(email_channel_data)
             send_mailjet_email(report_cfg, email_html)
             with open("report/investing/email.html", "w", errors="ignore") as f:
                 f.write(email_html)
 
         except Exception as e:
-            print("FAILED TO MAKE TEMPLATE")
-            print(e)
+            ic("FAILED TO MAKE TEMPLATE")
+            ic(e)
         # this includes folders, need to correct my output folder to be nested one more
         for report_file in glob.glob(f"{output_folder}/*"):
             try:
@@ -155,7 +157,8 @@ def main(args):
                 # gh report folder expected to be gh-pages/subcategory/date
                 shutil.move(report_file, gh_report_folder)
             except shutil.Error as e:
-                print(e)
+                ic()
+                ic(e)
         yt_df = yt_df.sort_values(by=["date"], ascending=False)
         yt_df.to_csv("yt_data.csv")
         yt_df["path"] = yt_df["path"].apply(
@@ -172,10 +175,10 @@ def main(args):
             with open("lib/index.jinja2") as file_:
                 template = Template(file_.read())
             index_html = template.render(**options)
-            with open("report/gh-pages/index.html", "w") as file_:
+            with open("report/gh-pages/index.html", "w", errors='ignore') as file_:
                 file_.write(index_html)
         except Exception as e:
-            print(e)
+            ic(e)
 
 if __name__ == "__main__":
     assert sys.version_info >= (3, 6)
@@ -189,5 +192,5 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
     main(args)
-    print("Script Complete")
-    print(datetime.now() - startTime)
+    ic("Script Complete")
+    ic(datetime.now() - startTime)
