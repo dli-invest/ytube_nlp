@@ -98,7 +98,6 @@ class YTNLP(NLPLogic):
         renderer_template = template.render(**options)
         with open(report_path, "w", errors="ignore") as f:
             f.write(renderer_template)
-        pass
 
     def make_report_complex(self, options=dict(), report_path="index.html"):
         with open(self.html_template, errors='ignore') as file_:
@@ -136,7 +135,6 @@ class YTNLP(NLPLogic):
 
     def __exit__(self, exc_type, exc_value, traceback):
         self.nlp = None
-        pass
 
 
 if __name__ == "__main__":
