@@ -3,6 +3,7 @@ from spacy.matcher import Matcher
 from spacy.lang.en import English
 from lib.custom_nlp.patterns import cse_pattern, tsx_pattern, stock_phrases
 import re
+from spacytextblob.spacytextblob import SpacyTextBlob
 try:
     from lib.custom_nlp.curr_tickers import stocks as stock_names
 except ImportError as e:
@@ -13,7 +14,9 @@ except ImportError as e:
 # All NLP logic is encompassed in this object
 class NLPLogic:
     def __init__(self):
-        self.nlp = spacy.load("en_core_web_sm")
+        nlp = spacy.load('en_core_web_sm')
+        nlp.add_pipe("spacytextblob")
+        self.nlp = nlp
 
     def get_text_matches(self, text):
         matches = []

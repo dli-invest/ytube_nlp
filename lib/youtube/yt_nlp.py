@@ -7,6 +7,9 @@ from youtube_transcript_api import YouTubeTranscriptApi, NoTranscriptFound
 from youtube_transcript_api._errors import TranscriptsDisabled
 from lib.custom_nlp.text_processing import NLPLogic
 from icecream import ic
+
+# use textblob
+from textblob import TextBlob
 # Youtube Natural Language Processing
 class YTNLP(NLPLogic):
     # Initializer / Instance Attributes
@@ -65,8 +68,9 @@ class YTNLP(NLPLogic):
             text = text_obj["text"]
             doc = self.nlp(text)
             detailed_obj = text_obj
+            blob = TextBlob(text)
             detailed_obj["ents"] = list(doc.ents)
-            detailed_obj["sentiment"] = doc.sentiment
+            detailed_obj["sentiment"] = doc._.polarity
             # Iterate over the tokens in the doc
             for token in doc:
                 # Check if the token resembles a number
