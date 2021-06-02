@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gYtinM-pyXY</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'gYtinM-pyXY',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>OUT OF CHAPTER 11?</td>
+                  <td>2.403</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(3.069);">Jump to 3.069</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>SUSTAINABILITY, TWO CYCLE AND </td>
+                  <td>2.803</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(19.953);">Jump to 19.953</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        SUSTAINABILITY
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        TWO
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        CYCLE
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>FOCUSED ON THE END OF 2020</td>
+                  <td>7.341</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(28.094);">Jump to 28.094</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>FIVE QUARTERS OF DOUBLE DIGITS, </td>
+                  <td>7.04</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(30.33);">Jump to 30.33</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        FIVE QUARTERS
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>SECOND QUARTER OR FIRST HALF OF </td>
+                  <td>2.503</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(179.078);">Jump to 179.078</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        SECOND QUARTER OR FIRST HALF OF
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>OVER THREE QUARTERS OF OUR</td>
+                  <td>2.969</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(207.14);">Jump to 207.14</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
