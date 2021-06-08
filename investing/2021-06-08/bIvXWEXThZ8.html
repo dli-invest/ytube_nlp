@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>bIvXWEXThZ8</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'bIvXWEXThZ8',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>ORIGINS FIRST HUMAN SPACE FLIGHT</td>
+                  <td>2.636</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(14.28);">Jump to 14.28</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        ORIGINS FIRST
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>RISING 10.5%</td>
+                  <td>3.47</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(34.167);">Jump to 34.167</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        PERCENT
+                      </span>
+                      <span class="uk-label">
+                        RISING 10.5%
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>>> EXCITING FIRST OF ALL</td>
+                  <td>3.07</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(37.737);">Jump to 37.737</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>DOING GOES BACK TO OUR FIRST</td>
+                  <td>2.802</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(44.778);">Jump to 44.778</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        FIRST
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>PROOF ONE OF THE SMARTEST </td>
+                  <td>4.738</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(66.499);">Jump to 66.499</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        SMARTEST
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>

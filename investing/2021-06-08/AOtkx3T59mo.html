@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>AOtkx3T59mo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'AOtkx3T59mo',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>IRELAND'S BELOW 15% NOT TO</td>
+                  <td>4.938</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(95.428);">Jump to 95.428</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        PERCENT
+                      </span>
+                      <span class="uk-label">
+                        15%
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>EXPANDING THIS TO THE G 20 OR </td>
+                  <td>3.47</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(102.335);">Jump to 102.335</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        20
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>>> YOU KNOW, THERE'S TWO THINGS </td>
+                  <td>3.436</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(176.643);">Jump to 176.643</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        TWO
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>>> TOM, TWO ISSUES HERE THOUGH I</td>
+                  <td>3.336</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(213.947);">Jump to 213.947</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        TWO
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>THINK, WHICH IS ONE IS WHAT DOES</td>
+                  <td>3.003</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(215.915);">Jump to 215.915</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>PRESIDENT FOR THE LAST FOUR </td>
+                  <td>1.135</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(246.946);">Jump to 246.946</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        FOUR
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>

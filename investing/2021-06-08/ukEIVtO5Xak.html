@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ukEIVtO5Xak</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'ukEIVtO5Xak',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>$10 STOCK PROBABLY STAGED AT</td>
+                  <td>2.569</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(97.83);">Jump to 97.83</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        10
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>$10.</td>
+                  <td>3.236</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(100.233);">Jump to 100.233</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        10
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>IT'S GOT A $57 BILLION MARKET </td>
+                  <td>2.836</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(124.357);">Jump to 124.357</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        $57 BILLION
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>YOURS FOR 15 YEARS. </td>
+                  <td>2.836</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(144.51);">Jump to 144.51</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        15 YEARS
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>HAPPENS TO BE ONE OWNED BY A LOT</td>
+                  <td>2.168</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(164.197);">Jump to 164.197</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        LOT
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>FIRST-TIME CALLER.</td>
+                  <td>3.269</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(198.498);">Jump to 198.498</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        FIRST-TIME CALLER
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
