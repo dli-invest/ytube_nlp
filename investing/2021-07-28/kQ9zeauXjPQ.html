@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>kQ9zeauXjPQ</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'kQ9zeauXjPQ',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>APP'S VALUE AT $3.4 BILLION.</td>
+                  <td>5.272</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(22.622);">Jump to 22.622</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-success">
+                      
+                        ORG
+                      </span>
+                      <span class="uk-label">
+                        APP
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        $3.4 BILLION
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>THE COMPANY IS A THREE-TIME CNBC</td>
+                  <td>3.337</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(24.824);">Jump to 24.824</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>VALUATION THE RIGHT ONE?</td>
+                  <td>2.936</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(54.921);">Jump to 54.921</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>ROBINHOOD LOOKS CHEAP AT 13.50</td>
+                  <td>5.338</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(86.086);">Jump to 86.086</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        13.50
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>TRADING AROUND 6.7 TIMES</td>
+                  <td>5.805</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(114.581);">Jump to 114.581</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>ESTIMATED 2022 SALES</td>
+                  <td>6.774</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(116.749);">Jump to 116.749</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>ROBINHOOD'S IPO PEGS THAT 10.5</td>
+                  <td>3.27</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(120.453);">Jump to 120.453</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        10.5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>

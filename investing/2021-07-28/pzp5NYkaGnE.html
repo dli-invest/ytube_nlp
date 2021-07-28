@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>pzp5NYkaGnE</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'pzp5NYkaGnE',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>um 5g i mean iphone sales uh really a</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(8.4);">Jump to 8.4</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>but there's still a lot of growth for 5g</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(12.88);">Jump to 12.88</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>13 and upgrades with 5g</td>
+                  <td>6.24</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(19.119);">Jump to 19.119</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        13
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>adam i do i i think uh the iphone 13</td>
+                  <td>5.199</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(22.32);">Jump to 22.32</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        13
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>my view over the next one to two years</td>
+                  <td>4.08</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(45.2);">Jump to 45.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        the next one to two years
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>i i think there are a few uh first i</td>
+                  <td>3.2</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(63.84);">Jump to 63.84</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>remember the ipod nearly 20 years ago</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(136.08);">Jump to 136.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        nearly 20 years ago
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>when iphone 12 came out about the</td>
+                  <td>3.041</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(154.959);">Jump to 154.959</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        12
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>because that 39.5 billion just in iphone</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(161.2);">Jump to 161.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        39.5 billion
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>last year it was 26.4 billion</td>
+                  <td>4.24</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(165.2);">Jump to 165.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        last year
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        26.4 billion
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>over a billion devices a billion iphones</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(185.12);">Jump to 185.12</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>these next generation or 5g networks in</td>
+                  <td>3.28</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(191.28);">Jump to 191.28</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>three three four</td>
+                  <td>2.879</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(205.92);">Jump to 205.92</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        three
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>five years and the ability to have a</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(206.879);">Jump to 206.879</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        five years
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>with an iphone or other 5g devices uh</td>
+                  <td>4.081</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(210.319);">Jump to 210.319</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        5
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>just this one quarter or even then</td>
+                  <td>3.679</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(218.56);">Jump to 218.56</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>the next one it's it's a multi-year</td>
+                  <td>3.84</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(220.319);">Jump to 220.319</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>uh gaining about 18 of sales from china</td>
+                  <td>4.32</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(228.08);">Jump to 228.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        about 18
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>out globally over 200 billion dollars</td>
+                  <td>4.56</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(307.52);">Jump to 307.52</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        200 billion dollars
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>you know exceeding 60 miles per hour</td>
+                  <td>4.4</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(327.84);">Jump to 327.84</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        QUANTITY
+                      </span>
+                      <span class="uk-label">
+                        60 miles
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>watch very closely uh first and foremost</td>
+                  <td>4.08</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(338.72);">Jump to 338.72</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>12 new macs new ipads air tags they've</td>
+                  <td>4.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(348.08);">Jump to 348.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        12
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>innovate and execute through what is one</td>
+                  <td>2.319</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(352.72);">Jump to 352.72</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>over the next one to two years</td>
+                  <td>3.84</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(386.4);">Jump to 386.4</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        the next one to two years
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
