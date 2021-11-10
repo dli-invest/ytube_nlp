@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VIMcl-XPjuk</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'VIMcl-XPjuk',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>here a bit at the one hotel in brooklyn</td>
+                  <td>5.361</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(1.839);">Jump to 1.839</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>at 29 years old sbf is the youngest</td>
+                  <td>4.16</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(22.08);">Jump to 22.08</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        29 years old
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>to reach the fortune 400 list but i like</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(26.24);">Jump to 26.24</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        400
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one of the nicest people in crypto but</td>
+                  <td>4.24</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(30.72);">Jump to 30.72</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one of the smartest as well uh spf</td>
+                  <td>3.919</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(32.32);">Jump to 32.32</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>than a billion dollars on the year here</td>
+                  <td>5.2</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(57.28);">Jump to 57.28</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        the year
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>the first through your acquisition of</td>
+                  <td>3.039</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(68.4);">Jump to 68.4</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>we've been around for about two and a</td>
+                  <td>2.72</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(100.56);">Jump to 100.56</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        about two
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>don't have 100 million users um and and</td>
+                  <td>5.199</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(112.88);">Jump to 112.88</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        100 million
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>ecosystem for the first time</td>
+                  <td>4.8</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(121.52);">Jump to 121.52</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>you know especially six months there's a</td>
+                  <td>3.441</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(124.159);">Jump to 124.159</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        six months
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>like one example of of of just the reach</td>
+                  <td>5.52</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(191.2);">Jump to 191.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>maybe the people who came along first in</td>
+                  <td>3.761</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(211.599);">Jump to 211.599</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>2017.</td>
+                  <td>2.799</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(215.36);">Jump to 215.36</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2017
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>six months but it is still predominantly</td>
+                  <td>5.039</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(229.84);">Jump to 229.84</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        six months
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>i guess the one similarity to between</td>
+                  <td>3.28</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(278.0);">Jump to 278.0</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>there is one project that you've been a</td>
+                  <td>3.759</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(286.0);">Jump to 286.0</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>that though it's up almost 12 000</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(294.88);">Jump to 294.88</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        almost 12 000
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>everything is going up that's one thing</td>
+                  <td>3.12</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(316.0);">Jump to 316.0</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>transactions per second</td>
+                  <td>4.16</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(369.36);">Jump to 369.36</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        second
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>that millions of transactions per second</td>
+                  <td>5.121</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(378.479);">Jump to 378.479</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        millions
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        second
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>think that salon is one of the few</td>
+                  <td>4.641</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(387.199);">Jump to 387.199</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>second um at you know fractions of a</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(396.88);">Jump to 396.88</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        second
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>billion users absolutely i think that</td>
+                  <td>3.36</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(416.8);">Jump to 416.8</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>in the project and i guess that's one</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(437.12);">Jump to 437.12</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>if there's one that maybe stands out to</td>
+                  <td>2.16</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(552.56);">Jump to 552.56</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one that you'd point to what you see</td>
+                  <td>4.239</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(559.04);">Jump to 559.04</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>from newbies in the crypto space is one</td>
+                  <td>4.48</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(560.72);">Jump to 560.72</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>built a bitcoin arbitrage bought in 2012</td>
+                  <td>4.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(581.12);">Jump to 581.12</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2012
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>2013 something like that</td>
+                  <td>4.32</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(584.0);">Jump to 584.0</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        2013
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>five ways you know five years later we</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(591.2);">Jump to 591.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        five
+                      </span>
+                    </ul>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        five years later
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one of them is thinking about what the</td>
+                  <td>3.12</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(622.48);">Jump to 622.48</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>like what a comprehensive one could look</td>
+                  <td>3.44</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(625.6);">Jump to 625.6</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>like i think one of them frankly is just</td>
+                  <td>3.92</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(627.2);">Jump to 627.2</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>uh and then i guess there's one other</td>
+                  <td>4.241</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(652.079);">Jump to 652.079</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>answer your address two or three times</td>
+                  <td>3.201</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(671.279);">Jump to 671.279</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        two
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>right like every every extra 10 seconds</td>
+                  <td>3.12</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(692.64);">Jump to 692.64</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        TIME
+                      </span>
+                      <span class="uk-label">
+                        10 seconds
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>a pass on that one uh and they also</td>
+                  <td>3.841</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(722.639);">Jump to 722.639</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>given more comparing it to about a 15</td>
+                  <td>5.279</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(747.12);">Jump to 747.12</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        15
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>something again probably given 30</td>
+                  <td>4.64</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(775.04);">Jump to 775.04</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        30
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>million or so this year um i some of</td>
+                  <td>5.199</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(776.88);">Jump to 776.88</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        million or so this year
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>i think one thing to note is that</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(785.04);">Jump to 785.04</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>uh certainly under a million uh</td>
+                  <td>3.92</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(812.24);">Jump to 812.24</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        under a million
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>uh so that certainly is one limitation</td>
+                  <td>4.641</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(817.519);">Jump to 817.519</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one of them uh is uh you know around bio</td>
+                  <td>7.2</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(848.8);">Jump to 848.8</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>effects and you know one of those is the</td>
+                  <td>3.92</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(879.68);">Jump to 879.68</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>one thing we've seen over the last few</td>
+                  <td>2.32</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(887.92);">Jump to 887.92</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>the next one could be worse like this</td>
+                  <td>4.8</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(906.24);">Jump to 906.24</a></td>
+                  <td>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>think that's that's one of the most</td>
+                  <td>3.12</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(944.0);">Jump to 944.0</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>them been right here in 2021 when you</td>
+                  <td>4.0</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(978.16);">Jump to 978.16</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2021
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>look ahead to 2022 though what would be</td>
+                  <td>4.239</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(979.6);">Jump to 979.6</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        DATE
+                      </span>
+                      <span class="uk-label">
+                        2022
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>crypto one thing specifically that you'd</td>
+                  <td>3.281</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(983.839);">Jump to 983.839</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>i i think sort of one stark thing here</td>
+                  <td>5.201</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(1034.319);">Jump to 1034.319</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        one
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>know 90 plus percent offshore um you</td>
+                  <td>4.641</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(1041.839);">Jump to 1041.839</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        PERCENT
+                      </span>
+                      <span class="uk-label">
+                        90 plus percent
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
