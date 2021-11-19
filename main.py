@@ -42,6 +42,14 @@ def main(args):
         )
         pathlib.Path(gh_report_folder2).mkdir(parents=True, exist_ok=True)
 
+        # video stats object per channel 
+        # send to new discord channel for stats
+
+        # per channel stats
+        # missed videos
+        # hit videos
+        # total videos per channel
+        # global stats
         email_channel_data = []
         # Make channel videos
         # This loop isn't extremely expensive as
@@ -77,6 +85,9 @@ def main(args):
                             is_generated = yt_nlp.gen_report_for_id(
                                 video_id, report_path=file_path, video_data=video_data
                             )
+                        else:
+                            # tally videos that are missed
+                            continue
 
                         # temp array of objects
                         matches_per_vid = []
@@ -165,8 +176,10 @@ def main(args):
             lambda x: path_to_url(x)
         )  # f'<a href="./{investing/2020-07-09/-5aG8r2fkM0.html}'
         try:
+            # slice yt_df
+            yt_df_small = yt_df.head(5000)
             options = dict(
-                HTML_TABLE=yt_df.to_html(
+                HTML_TABLE=yt_df_small.to_html(
                     table_id="datatable",
                     classes="uk-table cell-border compact stripe",
                     render_links=True,

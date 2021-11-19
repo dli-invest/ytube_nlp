@@ -23,7 +23,6 @@ stock_phrases = [[{"LOWER": "trutrace"}],
             [{"LOWER": "blockchain"}],
             [{"LOWER": "cnbc"}, {"LOWER": "after"}, {"LOWER": "hours"}],
             [{"LOWER": "coronavirus"}],
-            [{"LOWER": "cramer"}],
             [{"LOWER": "bee"}, {"LOWER": "vector"}],
             [{"LOWER": "gamestop"}],
             [{"LOWER": "taxes"}]
