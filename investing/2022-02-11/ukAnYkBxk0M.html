@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ukAnYkBxk0M</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.4/dist/css/uikit.min.css" />
+    </head>
+    <body>
+      <div class="uk-section uk-section-primary">
+        <div class="uk-container">
+
+        <h2>Video</h2>
+        <div id="ytplayer"></div>
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '576',
+              width: '1024',
+              videoId: 'ukAnYkBxk0M',
+              events: {
+                'onStateChange': onPlayerStateChange
+              }
+            });
+          }
+          function onPlayerStateChange(e)
+          {
+            if (e.data == 1 && ytSeconds > 0) {
+              e.target.seekTo(ytSeconds);
+              ytSeconds = 0;
+            }
+          }
+
+          function seekTo(seconds)
+          {
+            if (player.getPlayerState() == 1) {
+              player.seekTo(seconds);
+            }
+            else {
+              ytSeconds = seconds;
+              player.playVideo();
+            }
+          }
+        </script>
+        </div>
+      </div>
+      <div class="uk-section uk-section-muted">
+        <div class="uk-container">
+
+          <h3>Data</h3>
+          <table class="uk-table uk-table-striped">
+            <thead>
+              <tr>
+                  <th>Text</th>
+                  <th>duration</th>
+                  <th>start</th>
+                  <th>ents</th>
+                  <th>sentiment</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                <tr>
+                  <td>first of all can your echo sewer we have</td>
+                  <td>4.8</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(4.48);">Jump to 4.48</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        ORDINAL
+                      </span>
+                      <span class="uk-label">
+                        first
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>before we weren't sure our 15 holes</td>
+                  <td>4.319</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(9.28);">Jump to 9.28</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        15
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>and um so already we've got using a 0.15</td>
+                  <td>6.479</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(39.76);">Jump to 39.76</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        CARDINAL
+                      </span>
+                      <span class="uk-label">
+                        0.15
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>cutoff 2.2 billion pounds of copper and</td>
+                  <td>3.92</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(43.28);">Jump to 43.28</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-danger">
+                      
+                        MONEY
+                      </span>
+                      <span class="uk-label">
+                        2.2 billion pounds
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>and 1.18 million ounces of gold and some</td>
+                  <td>4.56</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(47.2);">Jump to 47.2</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        QUANTITY
+                      </span>
+                      <span class="uk-label">
+                        1.18 million ounces
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+                <tr>
+                  <td>silver 15 million ounces so that's a</td>
+                  <td>4.56</td>
+                  <td><a class="uk-link-text" href="#"  onclick="seekTo(49.44);">Jump to 49.44</a></td>
+                  <td>
+                  
+                    <ul class="uk-list uk-list-divider">
+                      
+                        <span class="uk-label uk-label-warning">
+                      
+                        QUANTITY
+                      </span>
+                      <span class="uk-label">
+                        15 million ounces
+                      </span>
+                    </ul>
+                  
+                  </td>
+                  <td></td>
+                </tr>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </body>
+</html>
